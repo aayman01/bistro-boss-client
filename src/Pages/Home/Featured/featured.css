@@ -1,0 +1,8 @@
+.featured-item{
+    background-image: url('../../../assets/home/featured.jpg');
+    /* background: linear-gradient(0deg, rgba(21, 21, 21, 0.70) 0%, rgba(21, 21, 21, 0.70) 100%), url('../../../assets/home/featured.jpg') lightgray 50% ; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 120px;
+}
