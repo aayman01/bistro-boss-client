@@ -3,16 +3,16 @@ import SectionTitle from "../../../Components/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 const PopularMenu = () => {
-  const [menu, setMenu] = useState([]);
-  console.log(menu);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const popularItems = data.filter((item) => item.category === "popular");
-        setMenu(popularItems);
-      });
-  }, []);
+  // const [menu, setMenu] = useState([]);
+  // console.log(menu);
+  // useEffect(() => {
+  //   fetch("menu.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const popularItems = data.filter((item) => item.category === "popular");
+  //       setMenu(popularItems);
+  //     });
+  // }, []);
   return (
     <section className="mb-12">
       <SectionTitle
@@ -24,6 +24,7 @@ const PopularMenu = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
+      <button className="btn btn-outline border-0 border-b-2 mt-4">View All Menu</button>
     </section>
   );
 };
