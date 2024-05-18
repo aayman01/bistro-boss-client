@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
           element: <Menu/>
         },
         {
-          path: '/oder/:category',
+          path: 'oder/:category',
           element: <Oder/>
         }
     ]

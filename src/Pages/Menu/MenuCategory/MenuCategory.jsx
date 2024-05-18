@@ -7,7 +7,7 @@ const MenuCategory = ({items, title, coverImg}) => {
 
     return (
       <div className="my-4">
-        {title && <Cover title="Our Menu" img={coverImg} />}
+        {title && <Cover title={title} img={coverImg} />}
 
         <div className="grid md:grid-cols-2 gap-5 my-16">
           {items.map((item) => (
