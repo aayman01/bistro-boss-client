@@ -5,6 +5,8 @@ import Menu from "../Pages/Menu/Menu/Menu";
 import Oder from "../Pages/Oder/Oder/Oder";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import Secrect from "../Pages/Secrect";
 
 
 export const router = createBrowserRouter([
@@ -32,6 +34,12 @@ export const router = createBrowserRouter([
           path:'/signup',
           element:<SignUp/>
         },
+        {
+          path: '/secrect',
+          element: <PrivateRoute>
+            <Secrect/>
+          </PrivateRoute>
+        }
     ]
   },
 ]);

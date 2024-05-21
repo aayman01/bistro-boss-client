@@ -5,13 +5,18 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import useAuth from "../../Hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const {signIn} = useAuth();
-  const [disable, setDisable] = useState(true)
+  const [disable, setDisable] = useState(true);
+
+  const from = location.state?.from?.pathname || '/'; 
+
   useEffect(()=>{
     loadCaptchaEnginge(6); 
   },[])
@@ -33,6 +38,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(from,{replace : true})
     })
     .catch(err => {
       console.log(err.message)
