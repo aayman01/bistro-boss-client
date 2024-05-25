@@ -9,7 +9,7 @@ const Cart = () => {
   const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -35,12 +35,12 @@ const Cart = () => {
   };
   return (
     <div>
-      <div className="flex justify-evenly items-center">
+      <div className="flex justify-evenly items-center mt-7">
         <h2 className="text-6xl">My item: {cart.length}</h2>
         <h2 className="text-6xl">Total price: {totalprice}</h2>
         <button className="btn btn-primary">Pay</button>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-7">
         <table className="table">
           {/* head */}
           <thead>

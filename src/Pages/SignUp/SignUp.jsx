@@ -2,14 +2,18 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
+import SocialLogin from "../../Components/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -17,21 +21,31 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then(() => {
         updateUserProfile(data.name, data.photoURL)
-          .then(()=>{
-            reset();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Succesfully Logged in",
-              showConfirmButton: false,
-              timer: 1500,
+          .then(() => {
+            // create user entry to database
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res?.data?.insertedId) {
+                console.log("user added to the database")
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Succesfully Logged in",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
             });
           })
-          .catch()
+          .catch();
       })
       .catch((err) => {
         console.log(err.message);
-      })
+      });
   };
 
   return (
@@ -143,6 +157,14 @@ const SignUp = () => {
                 />
               </div>
             </form>
+            <div className="flex items-center justify-center">
+              <SocialLogin />
+            </div>
+            <p className="text-center mb-4">
+              <small>
+                Already have an account?<Link to="/login">Log in</Link>
+              </small>
+            </p>
           </div>
         </div>
       </div>
