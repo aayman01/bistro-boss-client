@@ -21,14 +21,14 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashborad/additems">
+                  <NavLink to="/dashborad/additem">
                     <FaUtensils />
                     Add Items
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashborad/manageitems">
-                    <FaList/> Manage Items 
+                    <FaList /> Manage Items
                   </NavLink>
                 </li>
                 <li>
