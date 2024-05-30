@@ -4,11 +4,9 @@ import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import Testimonial from "../Testimonial/Testimonial";
-import useAuth from "../../../Hooks/useAuth";
 
 const Home = () => {
-  const {user} = useAuth();
-  console.log(user)
+
     return (
       <div>
         <Helmet>

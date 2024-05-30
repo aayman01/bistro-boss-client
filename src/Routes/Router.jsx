@@ -15,6 +15,8 @@ import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 
 export const router = createBrowserRouter([
   {
@@ -57,12 +59,18 @@ export const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: 'payment',
-        element :<Payment/>,
+        path: "payment",
+        element: <Payment />,
       },
       {
-        path: 'paymentHistory',
-        element : <PaymentHistory/>
+        path: "paymentHistory",
+        element: <PaymentHistory />,
+      },
+      {
+        path : 'userhome',
+        element : <PrivateRoute>
+          <UserHome/>
+        </PrivateRoute>
       },
 
       // admin panel
@@ -97,7 +105,16 @@ export const router = createBrowserRouter([
             <UpdateItem></UpdateItem>
           </AdminRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/menu/${params.id}`),
+      },
+      {
+        path: "adminhome",
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
       },
     ],
   },
