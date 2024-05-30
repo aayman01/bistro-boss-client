@@ -52,9 +52,9 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashborad/reserve">
+                  <NavLink to="/dashborad/paymentHistory">
                     <FaCalendar />
-                    Reservation
+                    Payment History
                   </NavLink>
                 </li>
                 <li>

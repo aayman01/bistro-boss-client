@@ -22,19 +22,16 @@ const useAxiosSecure = () => {
 
   // interceptor response
   axiosSecure.interceptors.response.use(function (response){
-    return response
+    return response;
   },async (error) =>{
-    const status = error.response.status;
-    // console.log('error code in interceptor', status)
+    const status = error.response?.status;
+    console.log('error code in interceptor', status)
     if(status === 401 || status === 403){
       await logOut();
       navigate('/login')
     }
     return Promise.reject(error)
   })
-
-
-
   return axiosSecure;  
 };
 
